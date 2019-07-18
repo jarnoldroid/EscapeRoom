@@ -1,4 +1,4 @@
-const int hatchPin = 2;
+
 
 boolean hatchIsOpen = false;
 

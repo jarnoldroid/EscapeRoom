@@ -10,8 +10,7 @@ Button resetButton(RESET_BUTTON_PIN);
 Button playButton(PLAY_BUTTON_PIN);
 Button noteButtons[] = {4};
 
-const int TEST_BUTTON_PIN = 2;
-const int TEST_LED_PIN = 6;
+const int hatchPin = 2;
 const int NUMPIXELS = 192;
 
 Adafruit_NeoPixel pixels(NUMPIXELS, TEST_LED_PIN, NEO_GRB + NEO_KHZ800);

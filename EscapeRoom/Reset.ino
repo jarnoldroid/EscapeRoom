@@ -1,5 +1,4 @@
 
-
 boolean shouldReset() {
   boolean shouldReset = resetButton.pressed();
   logger("Should reset?", shouldReset);

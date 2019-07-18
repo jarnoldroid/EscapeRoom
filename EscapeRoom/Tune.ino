@@ -1,6 +1,4 @@
 
-
-
 boolean shouldPuzzleTunePlay() {
   boolean shouldPuzzleTunePlay = playButton.pressed();
   logger("Should Puzzle Tune Play?", shouldPuzzleTunePlay);
