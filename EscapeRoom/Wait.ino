@@ -30,9 +30,9 @@ void waitingSequence() {
 // a la strip.Color(r,g,b) as mentioned above), and a delay time (in ms)
 // between frames.
 void theaterChase(uint32_t color) {
-  for (int a = 0; a < 50; a++) { // Repeat 
-    for (int b = 0; b < 3; b++) { 
-      pixels.clear(); 
+  for (int a = 0; a < 50; a++) { // Repeat
+    for (int b = 0; b < 3; b++) {
+      pixels.clear();
       // 'c' counts up from 'b' to end of strip in steps of 3...
       for (int c = b; c < pixels.numPixels(); c += 3) {
         pixels.setPixelColor(c, color); // Set pixel 'c' to value 'color'

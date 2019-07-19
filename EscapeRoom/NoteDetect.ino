@@ -1,4 +1,5 @@
 const int DELAY_TIME_BETWEEN_RED_LIGHTS = 1000;
+const int NO_NOTE_PLAYED = -1;
 
 int sequence[] = {0, 2, 4, 1, 3};
 int sequencePosition = 0;
@@ -15,9 +16,11 @@ boolean isSequenceComplete() {
 
 void startNotePlayedDetection() {
 
-  if (noteHasBeenPlayed()) {
+  int notePlayedIndex = getNotePlayedIndex();
 
-    int notePlayedIndex = getNotePlayedIndex();
+  if (notePlayedIndex == NO_NOTE_PLAYED) {
+    //do nothing
+  } else {
     lightUpNote(notePlayedIndex);
 
     if (isNoteNextInSequence(notePlayedIndex)) {
@@ -32,21 +35,21 @@ void startNotePlayedDetection() {
       turnAllSequenceLightsOff();
     }
   }
-}
 
-//Has a note been played?
-boolean noteHasBeenPlayed() {
-  boolean noteplayed = true;
-  logger("Has a note been played?", noteplayed);
-  return noteplayed;
 }
 
 //If a note has been played get its Index
 int getNotePlayedIndex() {
-  //  int notePlayedIndex = 0;
-  int notePlayedIndex = sequence[sequencePosition]; //simulate sequence
-  logger("Note Played?", notePlayedIndex);
-  return notePlayedIndex;
+
+  for (int x = 0; x < 25; x++) {
+    if (noteButtons[x].pressed()) {
+      logger("Note Played?", x);
+      return x;
+    }
+  }
+
+  logger("Note Played? NO_NOTE_PLAYED");
+  return NO_NOTE_PLAYED;
 }
 
 void lightUpNote(int noteIndex) {
@@ -112,5 +115,7 @@ void turnAllSequenceLightsRed() {
 
 void turnAllSequenceLightsOff() {
   logger("Turn all sequence lights off");
+
   pixels.clear();
+  pixels.show();
 }

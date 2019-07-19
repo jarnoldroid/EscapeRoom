@@ -7,7 +7,7 @@ boolean shouldReset() {
 
 /* Reset variables back to default state*/
 void resetVars() {
+  pixels.clear();
   resetSequence();
-  pixels.clear(); 
   logger("Reseting variables");
 }

@@ -4,7 +4,7 @@ boolean hatchIsOpen = false;
 
 void openHatch() {
   logger("open hatch");
-  digitalWrite(hatchPin, HIGH);
+  digitalWrite(HATCH_PIN, HIGH);
   hatchIsOpen = true;
 }
 
@@ -12,7 +12,7 @@ void openHatch() {
 void closeHatch() {
   logger("close hatch");
   if (hatchIsOpen) {
-    digitalWrite(hatchPin, LOW);
+    digitalWrite(HATCH_PIN, LOW);
     hatchIsOpen = false;
   }
 }
