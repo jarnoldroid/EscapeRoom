@@ -6,7 +6,6 @@ int sequencePosition = 0;
 int nextNoteInSequence = sequence[sequencePosition];
 
 
-
 boolean isSequenceComplete() {
   int sizeOfSequence = (sizeof(sequence) / sizeof(sequence[0]));
   boolean isSequenceComplete = sequencePosition == sizeOfSequence;
@@ -42,7 +41,7 @@ void startNotePlayedDetection() {
 int getNotePlayedIndex() {
 
   for (int x = 0; x < 25; x++) {
-    if (noteButtons[x].pressed()) {
+    if (noteDetectionButtons[x].pressed()) {
       logger("Note Played?", x);
       return x;
     }
@@ -83,8 +82,8 @@ void resetSequence() {
 void turnSequenceLightGreen(int noteIndex) {
   logger("Turn sequence light Green", noteIndex);
 
-  int first = noteIndex * 8;
-  int last = first + 8;
+  int first = noteIndex * NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
+  int last = first + NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
 
   for (int i = first; i < last; i++) {
     pixels.setPixelColor(i, pixels.Color(0, 255, 0));
@@ -95,8 +94,8 @@ void turnSequenceLightGreen(int noteIndex) {
 void turnSequenceLightRed(int noteIndex) {
   logger("Turn sequence light Red", noteIndex);
 
-  int first = noteIndex * 8;
-  int last = first + 8;
+  int first = noteIndex * NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
+  int last = first + NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
 
   for (int i = first; i < last; i++) {
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
@@ -107,7 +106,7 @@ void turnSequenceLightRed(int noteIndex) {
 void turnAllSequenceLightsRed() {
   logger("Turn all sequence lights Red");
 
-  for (int i = 0; i < NUMPIXELS; i++) {
+  for (int i = 0; i < NUMBER_OF_NEO_PIXELS_TOTAL; i++) {
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
   }
   pixels.show();
