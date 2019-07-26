@@ -1,10 +1,9 @@
 const int DELAY_TIME_BETWEEN_RED_LIGHTS = 1000;
 const int NO_NOTE_PLAYED = -1;
 
-int sequence[] = {0, 2, 4, 1, 3};
+int sequence[] = {G5, C6, F6, B6, G7};
 int sequencePosition = 0;
 int nextNoteInSequence = sequence[sequencePosition];
-
 
 boolean isSequenceComplete() {
   int sizeOfSequence = (sizeof(sequence) / sizeof(sequence[0]));
@@ -34,7 +33,6 @@ void startNotePlayedDetection() {
       turnAllSequenceLightsOff();
     }
   }
-
 }
 
 //If a note has been played get its Index
@@ -82,8 +80,8 @@ void resetSequence() {
 void turnSequenceLightGreen(int noteIndex) {
   logger("Turn sequence light Green", noteIndex);
 
-  int first = noteIndex * NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
-  int last = first + NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
+  int first = noteIndex * 7;
+  int last = first + 7;
 
   for (int i = first; i < last; i++) {
     pixels.setPixelColor(i, pixels.Color(0, 255, 0));
@@ -94,8 +92,8 @@ void turnSequenceLightGreen(int noteIndex) {
 void turnSequenceLightRed(int noteIndex) {
   logger("Turn sequence light Red", noteIndex);
 
-  int first = noteIndex * NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
-  int last = first + NUMBER_OF_PIXELS_AROUND_EACH_HOLE;
+  int first = noteIndex * 7;
+  int last = first + 7;
 
   for (int i = first; i < last; i++) {
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));

@@ -6,44 +6,22 @@
 /**
    OTHER CONFIGURATIONS
 */
-const int NUMBER_OF_PIXELS_AROUND_EACH_HOLE = 7;
-const int NUMBER_OF_NEO_PIXELS_TOTAL = 196; //28 * 7
+
+const int NUMBER_OF_NEO_PIXELS_TOTAL = 339; 
 
 /*
    PINS CONFIGURATION:
 */
-const int HATCH_PIN = 47;
-const int RESET_BUTTON_PIN = 48;
-const int PLAY_BUTTON_PIN = 49;
-const int NEO_PIXEL_PIN = 50;
+const int HATCH_PIN = 8;
+const int RESET_BUTTON_PIN = 9;
+const int PLAY_BUTTON_PIN = 10;
+const int NEO_PIXEL_PIN = 6;
 
-//Shift Register for notes: G5, G#5, A5, A#5, B5, C6, C#6, D6
-const int SHIFT_REGISTER_1_CLOCK_PIN = 2;
-const int SHIFT_REGISTER_1_LATCH_PIN = 3;
-const int SHIFT_REGISTER_1_ENABLE_PIN = 4;
-const int SHIFT_REGISTER_1_CLEAR_PIN = 5;
-const int SHIFT_REGISTER_1_DATA_PIN = 6;
-
-//Shift Register for notes: D#6, E6, F6, F#6, G6, G#6, A6, A#6
-const int SHIFT_REGISTER_2_CLOCK_PIN = 7;
-const int SHIFT_REGISTER_2_LATCH_PIN = 8;
-const int SHIFT_REGISTER_2_ENABLE_PIN = 9;
-const int SHIFT_REGISTER_2_CLEAR_PIN = 10;
-const int SHIFT_REGISTER_2_DATA_PIN = 11;
-
-//Shift Register for notes: B6, C7, C#7, D7, D#7, E7, F7, F#7
-const int SHIFT_REGISTER_3_CLOCK_PIN = 12;
-const int SHIFT_REGISTER_3_LATCH_PIN = 13;
-const int SHIFT_REGISTER_3_ENABLE_PIN = 14;
-const int SHIFT_REGISTER_3_CLEAR_PIN = 15;
-const int SHIFT_REGISTER_3_DATA_PIN = 16;
-
-//Shift Register for note: G7
-const int SHIFT_REGISTER_4_CLOCK_PIN = 17;
-const int SHIFT_REGISTER_4_LATCH_PIN = 18;
-const int SHIFT_REGISTER_4_ENABLE_PIN = 19;
-const int SHIFT_REGISTER_4_CLEAR_PIN = 20;
-const int SHIFT_REGISTER_4_DATA_PIN = 21;
+const int CLOCK_PIN = 3;
+const int LATCH_PIN = 4;
+const int ENABLE_PIN = 5;
+const int CLEAR_PIN = 6;
+const int DATA_PIN = 7;
 
 const int NOTE_DETECTION_PIN_G5 = 22;
 const int NOTE_DETECTION_PIN_G5_SHARP = 23;
@@ -99,10 +77,34 @@ enum Note {
   _G7 = NOTE_DETECTION_PIN_G7
 };
 
-ShiftRegister shiftRegister1(SHIFT_REGISTER_1_CLOCK_PIN, SHIFT_REGISTER_1_LATCH_PIN, SHIFT_REGISTER_1_ENABLE_PIN, SHIFT_REGISTER_1_CLEAR_PIN, SHIFT_REGISTER_1_DATA_PIN);
-ShiftRegister shiftRegister2(SHIFT_REGISTER_2_CLOCK_PIN, SHIFT_REGISTER_2_LATCH_PIN, SHIFT_REGISTER_2_ENABLE_PIN, SHIFT_REGISTER_2_CLEAR_PIN, SHIFT_REGISTER_2_DATA_PIN);
-ShiftRegister shiftRegister3(SHIFT_REGISTER_3_CLOCK_PIN, SHIFT_REGISTER_3_LATCH_PIN, SHIFT_REGISTER_3_ENABLE_PIN, SHIFT_REGISTER_3_CLEAR_PIN, SHIFT_REGISTER_3_DATA_PIN);
-ShiftRegister shiftRegister4(SHIFT_REGISTER_4_CLOCK_PIN, SHIFT_REGISTER_4_LATCH_PIN, SHIFT_REGISTER_4_ENABLE_PIN, SHIFT_REGISTER_4_CLEAR_PIN, SHIFT_REGISTER_4_DATA_PIN);
+#define G5 1
+#define GS5 2
+#define A5 3
+#define AS5 4
+#define B5 5
+#define C6 6
+#define CS6 7
+#define D6 8
+#define DS6 9
+#define E6 10
+#define F6 11
+#define FS6 12
+#define G6 13
+#define GS6 14
+ 
+#define A6 15
+#define AS6 16
+#define B6 17
+#define C7 18
+#define CS7 19
+#define D7 20
+#define DS7 21
+#define E7 22
+#define F7 23
+#define FS7 24
+#define G7 25
+
+ShiftRegister shiftRegister(CLOCK_PIN, LATCH_PIN, ENABLE_PIN, CLEAR_PIN, DATA_PIN);
 
 Button resetButton(RESET_BUTTON_PIN);
 Button playButton(PLAY_BUTTON_PIN);
@@ -125,19 +127,15 @@ void setup() {
   pixels.setBrightness(255);
   resetVars();
 
-
-  shiftRegister1.begin();
-  shiftRegister2.begin();
-  shiftRegister3.begin();
-  shiftRegister4.begin();
+  shiftRegister.begin();
 }
 
 void loop() {
-
+  
   logger("Start of loop");
 
   if (shouldReset()) {
-
+    
     closeHatch();
     resetVars();
     delay(5000);
