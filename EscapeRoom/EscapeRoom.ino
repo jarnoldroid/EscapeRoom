@@ -22,31 +22,31 @@ const int ENABLE_PIN = 5;
 const int CLEAR_PIN = 6;
 const int DATA_PIN = 7;
 
-const int G5_PIN = 22;
-const int GS5_PIN = 23;
-const int A5_PIN = 24;
-const int AS5_PIN = 25;
-const int B5_PIN = 26;
-const int C6_PIN = 27;
-const int CS6_PIN = 28;
-const int D6_PIN = 29;
-const int DS6_PIN = 30;
-const int E6_PIN = 31;
-const int F6_PIN = 32;
-const int FS6_PIN = 33;
-const int G6_PIN = 34;
-const int GS6_PIN = 35;
-const int A6_PIN = 36;
-const int AS6_PIN = 37;
-const int B6_PIN = 38;
-const int C7_PIN = 39;
-const int CS7_PIN = 40;
-const int D7_PIN = 41;
-const int DS7_PIN = 42;
-const int E7_PIN = 43;
-const int F7_PIN = 44;
-const int FS7_PIN = 45;
-const int G7_PIN = 46;
+const int G5_PIN = 23;
+const int GS5_PIN = 25;
+const int A5_PIN = 27;
+const int AS5_PIN = 29;
+const int B5_PIN = 31;
+const int C6_PIN = 33;
+const int CS6_PIN = 35;
+const int D6_PIN = 37;
+const int DS6_PIN = 39;
+const int E6_PIN = 41;
+const int F6_PIN = 43;
+const int FS6_PIN = 45;
+const int G6_PIN = 47;
+const int GS6_PIN = 49;
+const int A6_PIN = 51;
+const int AS6_PIN = 0;
+const int B6_PIN = 1;
+const int C7_PIN = 2;
+const int CS7_PIN = 3;
+const int D7_PIN = 4;
+const int DS7_PIN = 8;
+const int E7_PIN = 9;
+const int F7_PIN = 10;
+const int FS7_PIN = 11;
+const int G7_PIN = 12;
 
 /**
    Notes (Used to play - also used for detection)
@@ -99,10 +99,10 @@ int neoPixelStartIndex[] = {
 
 
 int holeToNoteMapping[] = {
-  G7,  FS7, F7,  E7,  DS7,  D7,  CS7,
-  C7,  B6,  AS6, A6,  GS6,  G6,  FS6,
-  F6,  E6,  DS6, D6,  CS6,  C6,  B5, 
-  AS5, A5,  GS5, G5,  X,    X,   X
+  G6,  FS6, F6,  AS6,  GS6,  E7,  X,
+  C6,  G7,  D6,  E6,   G5,   F7,  GS6,
+  B5,  D7,  B6,  CS7,  A5,   X,   CS6, 
+  FS7, AS5, DS6, FS7,  C7,   X,   A6
 };
 
 ShiftRegister shiftRegister(CLOCK_PIN, LATCH_PIN, ENABLE_PIN, CLEAR_PIN, DATA_PIN);
@@ -155,7 +155,7 @@ void loop() {
 
     }
 
-    delay(200);
+    delay(2000);
   }
 
   logger("End of loop");
