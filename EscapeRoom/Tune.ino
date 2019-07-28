@@ -23,11 +23,6 @@ void playPuzzleTune() {
   delay(300);
 }
 
-void playVictoryTune() {
-  logger("Play Victory Tune");
-  delay(5000);
-}
-
 void playNote(int note) {
   uint32_t dataValue = noteToUint32(note);
   shiftRegister.updateShiftRegister(dataValue);
