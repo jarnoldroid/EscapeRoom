@@ -12,7 +12,6 @@ const boolean LOGGER_ON = true;
 /*
    PINS CONFIGURATION:
 */
-const int HATCH_PIN = 8;
 const int RESET_BUTTON_PIN = 9;
 const int PLAY_BUTTON_PIN = 10;
 const int NEO_PIXEL_PIN = 6;
@@ -97,6 +96,8 @@ int neoPixelStartIndex[] = {
   251, 265, 277, 290, 302, 314, 327
 };
 
+
+
 int holeToNoteMapping[] = {
   G7,  FS7, F7,  E7,  DS7,  D7,  CS7,
   C7,  B6,  AS6, A6,  GS6,  G6,  FS6,
@@ -123,8 +124,6 @@ void setup() {
   pixels.begin();
   pixels.setBrightness(50);
 
-  resetVars();
-
   shiftRegister.begin();
   Serial.println("Setup complete");
 }
@@ -134,13 +133,12 @@ void loop() {
 
   if (shouldReset()) {
 
-    closeHatch();
     resetVars();
     delay(5000);
 
   } else if (isSequenceComplete()) {
 
-    waitingSequence();
+    flashDisplayCode();
 
   } else if (shouldPuzzleTunePlay()) {
 
@@ -152,7 +150,7 @@ void loop() {
 
     if (isSequenceComplete()) {
 
-      openHatch();
+      displayCode();
       playVictoryTune();
 
     }

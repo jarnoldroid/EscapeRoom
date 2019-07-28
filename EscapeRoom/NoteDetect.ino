@@ -6,8 +6,6 @@ int sequence[] = {G5, C6, F6, B6, G7};
 int sequencePosition = 0;
 int nextNoteInSequence = sequence[sequencePosition];
 
-const uint32_t RED = pixels.Color(255, 0, 0);
-const uint32_t GREEN = pixels.Color(0, 255, 0);
 
 boolean isSequenceComplete() {
   int sizeOfSequence = (sizeof(sequence) / sizeof(sequence[0]));
@@ -23,7 +21,6 @@ void startNotePlayedDetection() {
   if (notePlayed == NO_NOTE_PLAYED) {
     //do nothing
   } else {
-    lightUpNote(notePlayed);
 
     if (isNoteNextInSequence(notePlayed)) {
       turnSequenceLightGreen(notePlayed);
@@ -51,11 +48,6 @@ int getNotePlayed() {
 
   logger("Note Played? NO_NOTE_PLAYED");
   return NO_NOTE_PLAYED;
-}
-
-void lightUpNote(int noteIndex) {
-  logger("light up note", noteIndex);
-  //TODO light up the note that was played
 }
 
 boolean isNoteNextInSequence(int notePlayed) {
