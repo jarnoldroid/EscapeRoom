@@ -97,47 +97,4 @@ void mario() {
 
   delay(60);
   playNote(G5);
-  
-//  int notes2[] = {B5, F6, C7};
-//  playNotes(notes2);
-//
-//  delay(90);
-//
-//  int notes3[] = {C6, E6, F6, C7};
-//  playNotes(notes3);
-//
-//  delay(270);
-//
-//  int notes4[] = {AS5, C6, DS6, GS6};
-//  playNotes(notes4);
-//
-//  delay(90);
-//
-//  int notes5[] = {A5};
-//  playNotes(notes5);
-//
-//  delay(90);
-//
-//  int notes6[] = {GS5};
-//  playNotes(notes6);
-//
-//  delay(90);
-//
-//  int notes7[] = {G5, D6, F6, AS6};
-//  playNotes(notes7);
-//
-//  delay(270);
-//
-//  int notes8[] = {A5, E6, C7};
-//  playNotes(notes8);
-//
-//  delay(180);
-//
-//  int notes9[] = {G5, D6, AS6};
-//  playNotes(notes9);
-//
-//  delay(80);
-//
-//  int notes10[] = {A5, E6, C7};
-//  playNotes(notes10);
 }
